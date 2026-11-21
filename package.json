@@ -1,0 +1,36 @@
+{
+  "name": "luxecart",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "LuxeCart - A full-featured modern e-commerce application built with React",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-router-dom": "^7.6.1",
+    "@reduxjs/toolkit": "^2.8.2",
+    "react-redux": "^9.2.0",
+    "framer-motion": "^12.12.1",
+    "react-icons": "^5.5.0",
+    "react-hot-toast": "^2.5.2",
+    "react-helmet-async": "^2.0.5",
+    "recharts": "^2.15.3",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.4",
+    "@types/react-dom": "^19.1.5",
+    "@vitejs/plugin-react": "^4.5.2",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^9.27.0",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^3.4.17",
+    "vite": "^6.3.5"
+  }
+}
