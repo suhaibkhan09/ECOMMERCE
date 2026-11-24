@@ -12,8 +12,8 @@ import {
   setSortBy,
   setCurrentPage,
   clearFilters,
-} from '../../store/productSlice';
-import { getPaginationRange } from '../../utils/helpers';
+} from '../store/productSlice';
+import { getPaginationRange } from '../utils/helpers';
 
 const ProductsPage = () => {
   const dispatch = useDispatch();

@@ -6,8 +6,8 @@ import ProductGrid from '../components/product/ProductGrid';
 import ProductFilters from '../components/product/ProductFilters';
 import Breadcrumb from '../components/common/Breadcrumb';
 import EmptyState from '../components/common/EmptyState';
-import { setCategory, clearFilters } from '../../store/productSlice';
-import { categories } from '../../data/mockData';
+import { setCategory, clearFilters } from '../store/productSlice';
+import { categories } from '../data/mockData';
 
 const CategoryPage = () => {
   const { categoryId } = useParams();

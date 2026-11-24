@@ -7,7 +7,7 @@ import OrderTimeline from '../components/account/OrderTimeline';
 import Breadcrumb from '../components/common/Breadcrumb';
 import { selectOrderById } from '../store/orderSlice';
 import { addToCart, toggleCartDrawer } from '../store/cartSlice';
-import { formatPrice, formatDate } from '../../utils/helpers';
+import { formatPrice, formatDate } from '../utils/helpers';
 import toast from 'react-hot-toast';
 
 const OrderDetailPage = () => {

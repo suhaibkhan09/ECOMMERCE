@@ -6,7 +6,7 @@ import ProductGrid from '../components/product/ProductGrid';
 import ProductFilters from '../components/product/ProductFilters';
 import Breadcrumb from '../components/common/Breadcrumb';
 import EmptyState from '../components/common/EmptyState';
-import { setSearchQuery, clearFilters } from '../../store/productSlice';
+import { setSearchQuery, clearFilters } from '../store/productSlice';
 
 const SearchPage = () => {
   const [searchParams] = useSearchParams();

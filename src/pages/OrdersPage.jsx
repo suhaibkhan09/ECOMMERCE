@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet-async';
 import { FiPackage, FiArrowRight, FiClock } from 'react-icons/fi';
 import Breadcrumb from '../components/common/Breadcrumb';
 import EmptyState from '../components/common/EmptyState';
-import { formatPrice, formatDate } from '../../utils/helpers';
+import { formatPrice, formatDate } from '../utils/helpers';
 
 const OrdersPage = () => {
   const [filter, setFilter] = useState('all');

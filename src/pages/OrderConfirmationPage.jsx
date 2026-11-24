@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Helmet } from 'react-helmet-async';
 import { FiCheckCircle, FiPackage, FiTruck, FiArrowRight, FiFileText } from 'react-icons/fi';
-import { formatPrice, formatDate } from '../../utils/helpers';
+import { formatPrice, formatDate } from '../utils/helpers';
 
 const OrderConfirmationPage = () => {
   const { orderId } = useParams();
