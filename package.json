@@ -6,6 +6,7 @@
   "description": "LuxeCart - A full-featured modern e-commerce application built with React",
   "scripts": {
     "dev": "vite",
+    "start": "vite",
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint ."
