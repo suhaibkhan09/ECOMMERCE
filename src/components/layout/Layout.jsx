@@ -6,6 +6,7 @@ import Footer from './Footer';
 import MobileMenu from './MobileMenu';
 import CartDrawer from '../cart/CartDrawer';
 import QuickViewModal from '../product/QuickViewModal';
+import ComparisonBar from '../compare/ComparisonBar';
 
 const Layout = () => {
   const { pathname } = useLocation();
@@ -35,6 +36,7 @@ const Layout = () => {
       <MobileMenu />
       <CartDrawer />
       <QuickViewModal />
+      <ComparisonBar />
     </div>
   );
 };

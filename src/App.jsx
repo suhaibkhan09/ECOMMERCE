@@ -19,6 +19,7 @@ const AccountPage = lazy(() => import('./pages/AccountPage'));
 const OrdersPage = lazy(() => import('./pages/OrdersPage'));
 const OrderDetailPage = lazy(() => import('./pages/OrderDetailPage'));
 const WishlistPage = lazy(() => import('./pages/WishlistPage'));
+const ComparePage = lazy(() => import('./pages/ComparePage'));
 const SearchPage = lazy(() => import('./pages/SearchPage'));
 const CategoryPage = lazy(() => import('./pages/CategoryPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
@@ -46,6 +47,7 @@ function App() {
           <Route path="register" element={<RegisterPage />} />
           <Route path="forgot-password" element={<ForgotPasswordPage />} />
           <Route path="wishlist" element={<WishlistPage />} />
+          <Route path="compare" element={<ComparePage />} />
 
           {/* Protected routes */}
           <Route element={<ProtectedRoute />}>
