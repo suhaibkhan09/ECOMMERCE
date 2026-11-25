@@ -19,6 +19,7 @@ import { selectWishlistCount } from '../../store/wishlistSlice';
 import { toggleDarkMode, toggleMobileMenu } from '../../store/uiSlice';
 import { logout } from '../../store/authSlice';
 import { categories } from '../../data/mockData';
+import CurrencySelector from '../common/CurrencySelector';
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -103,6 +104,11 @@ const Header = () => {
 
           {/* Right Action Icons */}
           <div className="flex items-center gap-2 sm:gap-4">
+            {/* Currency Selector */}
+            <div className="hidden sm:block">
+              <CurrencySelector />
+            </div>
+
             {/* Dark Mode Toggle */}
             <button
               onClick={() => dispatch(toggleDarkMode())}

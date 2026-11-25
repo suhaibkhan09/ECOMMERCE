@@ -17,6 +17,7 @@ import {
 import { closeMobileMenu, toggleDarkMode } from '../../store/uiSlice';
 import { logout } from '../../store/authSlice';
 import { categories } from '../../data/mockData';
+import CurrencySelector from '../common/CurrencySelector';
 
 const MobileMenu = () => {
   const dispatch = useDispatch();
@@ -166,33 +167,39 @@ const MobileMenu = () => {
             </div>
 
             {/* Bottom Controls */}
-            <div className="p-5 border-t border-gray-100 dark:border-gray-800 flex items-center justify-between">
-              <button
-                onClick={() => dispatch(toggleDarkMode())}
-                className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300"
-              >
-                {darkMode ? (
-                  <>
-                    <FiSun className="text-amber-400" /> Light Mode
-                  </>
-                ) : (
-                  <>
-                    <FiMoon /> Dark Mode
-                  </>
-                )}
-              </button>
-
-              {isAuthenticated && (
+            <div className="p-5 border-t border-gray-100 dark:border-gray-800 flex flex-col gap-3">
+              <div className="flex items-center justify-between">
+                <span className="text-xs text-gray-500 font-medium">Currency</span>
+                <CurrencySelector compact />
+              </div>
+              <div className="flex items-center justify-between pt-1 border-t border-gray-50 dark:border-gray-800/60">
                 <button
-                  onClick={() => {
-                    dispatch(logout());
-                    handleClose();
-                  }}
-                  className="flex items-center gap-1.5 text-sm text-red-500 font-medium"
+                  onClick={() => dispatch(toggleDarkMode())}
+                  className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300"
                 >
-                  <FiLogOut /> Log out
+                  {darkMode ? (
+                    <>
+                      <FiSun className="text-amber-400" /> Light Mode
+                    </>
+                  ) : (
+                    <>
+                      <FiMoon /> Dark Mode
+                    </>
+                  )}
                 </button>
-              )}
+
+                {isAuthenticated && (
+                  <button
+                    onClick={() => {
+                      dispatch(logout());
+                      handleClose();
+                    }}
+                    className="flex items-center gap-1.5 text-sm text-red-500 font-medium"
+                  >
+                    <FiLogOut /> Log out
+                  </button>
+                )}
+              </div>
             </div>
           </motion.div>
         </div>
