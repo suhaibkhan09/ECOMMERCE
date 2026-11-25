@@ -2,17 +2,31 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
-import { FiHeart, FiEye, FiShoppingBag } from 'react-icons/fi';
+import { FiHeart, FiEye, FiShoppingBag, FiColumns } from 'react-icons/fi';
 import Rating from '../common/Rating';
 import PriceDisplay from '../common/PriceDisplay';
 import { addToCart, toggleCartDrawer } from '../../store/cartSlice';
 import { toggleWishlist, selectIsInWishlist } from '../../store/wishlistSlice';
+import { addToCompare, removeFromCompare, selectIsInCompare } from '../../store/compareSlice';
 import { setQuickViewProduct } from '../../store/uiSlice';
 import toast from 'react-hot-toast';
 
 const ProductCard = ({ product, viewMode = 'grid' }) => {
   const dispatch = useDispatch();
   const isInWishlist = useSelector(selectIsInWishlist(product.id));
+  const isInCompare = useSelector((state) => selectIsInCompare(state, product.id));
+
+  const handleToggleCompare = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (isInCompare) {
+      dispatch(removeFromCompare(product.id));
+      toast('Removed from comparison');
+    } else {
+      dispatch(addToCompare(product));
+      toast.success('Added to product comparison');
+    }
+  };
 
   const handleAddToCart = (e) => {
     e.preventDefault();
@@ -112,6 +126,17 @@ const ProductCard = ({ product, viewMode = 'grid' }) => {
               <FiEye />
             </button>
             <button
+              onClick={handleToggleCompare}
+              className={`p-2.5 rounded-lg border transition-colors ${
+                isInCompare
+                  ? 'border-amber-500 text-amber-500 bg-amber-50 dark:bg-amber-950/20'
+                  : 'border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+              }`}
+              title={isInCompare ? 'Remove from compare' : 'Compare product'}
+            >
+              <FiColumns />
+            </button>
+            <button
               onClick={handleToggleWishlist}
               className={`p-2.5 rounded-lg border transition-colors ${
                 isInWishlist
@@ -161,18 +186,33 @@ const ProductCard = ({ product, viewMode = 'grid' }) => {
             )}
           </div>
 
-          {/* Wishlist Button */}
-          <button
-            onClick={handleToggleWishlist}
-            className={`absolute top-3 right-3 z-10 p-2.5 rounded-full shadow-md backdrop-blur-md transition-all duration-200 ${
-              isInWishlist
-                ? 'bg-red-500 text-white'
-                : 'bg-white/80 dark:bg-gray-800/80 text-gray-700 dark:text-gray-200 hover:bg-white dark:hover:bg-gray-800 hover:text-red-500'
-            }`}
-            aria-label="Wishlist"
-          >
-            <FiHeart className={`w-4 h-4 ${isInWishlist ? 'fill-current' : ''}`} />
-          </button>
+          {/* Wishlist and Compare Buttons */}
+          <div className="absolute top-3 right-3 z-10 flex flex-col gap-1.5">
+            <button
+              onClick={handleToggleWishlist}
+              className={`p-2 rounded-full shadow-md backdrop-blur-md transition-all duration-200 ${
+                isInWishlist
+                  ? 'bg-red-500 text-white'
+                  : 'bg-white/80 dark:bg-gray-800/80 text-gray-700 dark:text-gray-200 hover:bg-white dark:hover:bg-gray-800 hover:text-red-500'
+              }`}
+              aria-label="Wishlist"
+              title="Add to Wishlist"
+            >
+              <FiHeart className={`w-3.5 h-3.5 ${isInWishlist ? 'fill-current' : ''}`} />
+            </button>
+            <button
+              onClick={handleToggleCompare}
+              className={`p-2 rounded-full shadow-md backdrop-blur-md transition-all duration-200 ${
+                isInCompare
+                  ? 'bg-amber-500 text-white'
+                  : 'bg-white/80 dark:bg-gray-800/80 text-gray-700 dark:text-gray-200 hover:bg-white dark:hover:bg-gray-800 hover:text-amber-500'
+              }`}
+              aria-label="Compare"
+              title={isInCompare ? 'Remove from compare' : 'Compare product'}
+            >
+              <FiColumns className="w-3.5 h-3.5" />
+            </button>
+          </div>
 
           {/* Quick View Button (Shows on Hover) */}
           <button
