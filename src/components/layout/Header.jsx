@@ -13,10 +13,12 @@ import {
   FiLogOut,
   FiPackage,
   FiSettings,
+  FiSliders,
 } from 'react-icons/fi';
 import { selectCartItemCount, toggleCartDrawer } from '../../store/cartSlice';
 import { selectWishlistCount } from '../../store/wishlistSlice';
 import { toggleDarkMode, toggleMobileMenu } from '../../store/uiSlice';
+import { toggleCustomizerModal } from '../../store/themeSlice';
 import { logout } from '../../store/authSlice';
 import { categories } from '../../data/mockData';
 
@@ -103,6 +105,16 @@ const Header = () => {
 
           {/* Right Action Icons */}
           <div className="flex items-center gap-2 sm:gap-4">
+            {/* Display & Accessibility Customizer */}
+            <button
+              onClick={() => dispatch(toggleCustomizerModal(true))}
+              className="p-2.5 text-gray-600 dark:text-gray-300 hover:text-amber-600 dark:hover:text-amber-400 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              aria-label="Display and Accessibility Settings"
+              title="Theme & Accessibility"
+            >
+              <FiSliders className="w-5 h-5" />
+            </button>
+
             {/* Dark Mode Toggle */}
             <button
               onClick={() => dispatch(toggleDarkMode())}
