@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { toggleCustomizerModal } from '../../store/themeSlice';
 import {
   FiMail,
   FiPhone,
@@ -10,6 +12,7 @@ import {
   FiTruck,
   FiRefreshCw,
   FiLock,
+  FiSliders,
 } from 'react-icons/fi';
 import {
   FaFacebookF,
@@ -24,6 +27,7 @@ import {
 } from 'react-icons/fa';
 
 const Footer = () => {
+  const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
 
@@ -184,7 +188,16 @@ const Footer = () => {
       {/* Bottom Bar */}
       <div className="border-t border-gray-800 py-8 bg-gray-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500">
-          <p>© {new Date().getFullYear()} LuxeCart Inc. All rights reserved. Crafted with passion.</p>
+          <div className="flex items-center gap-4 flex-wrap justify-center md:justify-start">
+            <p>© {new Date().getFullYear()} LuxeCart Inc. All rights reserved.</p>
+            <button
+              onClick={() => dispatch(toggleCustomizerModal(true))}
+              className="inline-flex items-center gap-1.5 text-gray-400 hover:text-amber-400 transition-colors font-medium border-l border-gray-800 pl-4"
+            >
+              <FiSliders className="w-3.5 h-3.5" />
+              <span>Theme & Accessibility</span>
+            </button>
+          </div>
           <div className="flex items-center space-x-4 text-2xl text-gray-400">
             <FaCcVisa className="hover:text-white transition-colors" title="Visa" />
             <FaCcMastercard className="hover:text-white transition-colors" title="Mastercard" />
