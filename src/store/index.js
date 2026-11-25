@@ -5,6 +5,7 @@ import productReducer from './productSlice';
 import wishlistReducer from './wishlistSlice';
 import uiReducer from './uiSlice';
 import orderReducer from './orderSlice';
+import notificationReducer from './notificationSlice';
 
 // Load persisted state from localStorage
 const loadState = () => {
@@ -42,6 +43,7 @@ export const store = configureStore({
     wishlist: wishlistReducer,
     ui: uiReducer,
     orders: orderReducer,
+    notification: notificationReducer,
   },
   preloadedState: loadState(),
 });
