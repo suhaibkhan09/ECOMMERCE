@@ -13,10 +13,12 @@ import {
   FiLogOut,
   FiPackage,
   FiSettings,
+  FiBell,
 } from 'react-icons/fi';
 import { selectCartItemCount, toggleCartDrawer } from '../../store/cartSlice';
 import { selectWishlistCount } from '../../store/wishlistSlice';
 import { toggleDarkMode, toggleMobileMenu } from '../../store/uiSlice';
+import { selectUnreadNotificationCount, toggleDrawer as toggleNotificationDrawer } from '../../store/notificationSlice';
 import { logout } from '../../store/authSlice';
 import { categories } from '../../data/mockData';
 
@@ -29,6 +31,7 @@ const Header = () => {
 
   const cartCount = useSelector(selectCartItemCount);
   const wishlistCount = useSelector(selectWishlistCount);
+  const unreadNotifs = useSelector(selectUnreadNotificationCount);
   const { darkMode } = useSelector((state) => state.ui);
   const { user, isAuthenticated } = useSelector((state) => state.auth);
 
@@ -103,6 +106,20 @@ const Header = () => {
 
           {/* Right Action Icons */}
           <div className="flex items-center gap-2 sm:gap-4">
+            {/* Notification Bell */}
+            <button
+              onClick={() => dispatch(toggleNotificationDrawer(true))}
+              className="relative p-2.5 text-gray-600 dark:text-gray-300 hover:text-amber-600 dark:hover:text-amber-400 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              aria-label="Notifications"
+            >
+              <FiBell className="w-5 h-5" />
+              {unreadNotifs > 0 && (
+                <span className="absolute -top-1 -right-1 bg-amber-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-sm animate-pulse">
+                  {unreadNotifs > 9 ? '9+' : unreadNotifs}
+                </span>
+              )}
+            </button>
+
             {/* Dark Mode Toggle */}
             <button
               onClick={() => dispatch(toggleDarkMode())}
